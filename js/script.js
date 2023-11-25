@@ -7,9 +7,6 @@ class UI {
     this.userGuess = document.querySelector("#userInput");
     this.correctAns = Math.ceil(Math.random() * 10);
     this.count = 3;
-    console.log(this.correctAns);
-
-    // console.log(this.userGuess.value);
   }
   starUp() {
     this.guessPrompt.forEach((prom) => {
@@ -22,7 +19,6 @@ class UI {
 
   checkingAnswer(e) {
     e.preventDefault();
-    console.log(e);
 
     let userText = parseInt(document.querySelector("#userInput").value);
     let re = /^[0-9]?[0-9]$/;
@@ -43,7 +39,6 @@ class UI {
         this.guessPrompt[0].removeAttribute("style");
 
         this.guessPrompt[1].setAttribute("style", "visibility:hidden");
-        console.log(this.guessPrompt[0].innerHTML);
         this.chance.innerHTML = `Chance: ${this.count}`;
       } else {
         this.guessPrompt[1].removeAttribute("style");
@@ -60,8 +55,6 @@ class UI {
       this.userGuess.disabled = true;
       document.querySelector("#guess").disabled = true;
     }
-
-    console.log(this.count);
   }
 }
 
