@@ -29,15 +29,32 @@ class UI {
     let numberCheck = re.test(userText);
     if (numberCheck && userText <= 10 && userText > 0) {
       // AnswerChecking
-      console.log(this.correctAns);
-      if (userText == this.correctAns) {
+      if (userText !== this.correctAns) {
+        this.mainPrompt.textContent = "";
+
+        if (userText < this.correctAns) {
+          this.guessPrompt[0].removeAttribute("style");
+          this.mainPrompt.textContent = "";
+          this.guessPrompt[1].setAttribute("style", "visibility:hidden");
+          console.log(this.guessPrompt[0].innerHTML);
+        } else {
+          this.guessPrompt[1].removeAttribute("style");
+          this.mainPrompt.textContent = "";
+          this.guessPrompt[0].setAttribute("style", "visibility:hidden");
+        }
+      } else if (userText === this.correctAns) {
         this.mainPrompt.textContent = "You Win!";
+        this.mainPrompt.style.fontSize = "50px";
+        this.guessPrompt[0].setAttribute("style", "visibility:hidden");
+        this.guessPrompt[1].setAttribute("style", "visibility:hidden");
       }
 
       // console.log(numberCheck);
     } else {
       this.mainPrompt.textContent = "Guess a number from 1  to 10";
       this.mainPrompt.classList.replace("text-primary", "text-danger");
+      this.guessPrompt[0].setAttribute("style", "visibility:hidden");
+      this.guessPrompt[1].setAttribute("style", "visibility:hidden");
     }
   }
 }
@@ -47,4 +64,4 @@ ui.starUp();
 // let a = ui.randomNum();
 // console.log(a);
 
-ui.form.addEventListener("submit", ui.checkingAnswer.bind(this));
+ui.form.addEventListener("submit", ui.checkingAnswer.bind(ui));
