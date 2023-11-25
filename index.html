@@ -45,8 +45,11 @@
                 <form>
                   <input
                     id="userInput"
-                    type="text"
+                    type="number"
                     style="text-align: center"
+                    max="10"
+                    min="1"
+                    required
                   />
                   <!-- button -->
                   <div class="row py-4">
@@ -55,7 +58,11 @@
                         class="btn btn-info shadow"
                         type="submit"
                         value="Guess"
+                        id="guess"
                       />
+                    </div>
+                    <div class="col-0">
+                      <a class="btn btn-danger mt-3 shadow" id="reset">Reset</a>
                     </div>
                   </div>
                 </form>
